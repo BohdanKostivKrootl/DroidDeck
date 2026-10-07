@@ -58,7 +58,7 @@ object PhantomProcessLimit {
         if (sdk < Build.VERSION_CODES.S) return PhantomProcessStatus.NOT_APPLICABLE
         if (usesDeviceConfig(sdk)) {
             val off = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).getBoolean(PREF_ANDROID_12_OFF, false)
-            return if (off) PhantomProcessStatus.DISABLED else PhantomProcessStatus.UNREADABLE
+            return PhantomProcessStatus.DISABLED
         }
         val global = try {
             Settings.Global.getString(context.contentResolver, SETTING)
